@@ -18,4 +18,16 @@ spec:
         image: <your-dockerhub-username>/my-app:latest
         ports:
         - containerPort: 3000
- 
+ ---
+ apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app
+  type: LoadBalancer
+  ports:
+  - name: name-of-service-port
+    port: 3000
+    targetPort: 3000
